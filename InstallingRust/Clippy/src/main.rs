@@ -1,6 +1,6 @@
 fn main() {
-    let MYLIST = [ "One", "Two", "Three" ];
+    let mylist = [ "One", "Two", "Three" ];
     for i in 0..3 {
-        println!("{}", MYLIST[i]);
+        println!("{}", mylist[i]);
     }
 }
