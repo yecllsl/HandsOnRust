@@ -41,18 +41,18 @@ def backup_file(file_path, dry_run=False):
         return None
 
 def replace_edition(file_path, dry_run=False):
-    """替换文件中的edition = "2018"为edition = "2021" """
+    """替换文件中的edition = "2021"为edition = "2024" """
     try:
         with open(file_path, 'r', encoding='utf-8') as f:
             content = f.read()
         
-        # 使用正则表达式匹配 edition = "2018"（允许空格变化）
-        pattern = r'edition\s*=\s*"2018"'
-        replacement = 'edition = "2021"'
+        # 使用正则表达式匹配 edition = "2021"（允许空格变化）
+        pattern = r'edition\s*=\s*"2021"'
+        replacement = 'edition = "2024"'
         
         # 检查是否匹配
         if not re.search(pattern, content):
-            return False, "未找到 edition = \"2018\""
+            return False, "未找到 edition = \"2021\""
         
         new_content = re.sub(pattern, replacement, content)
         
@@ -73,18 +73,18 @@ def replace_edition(file_path, dry_run=False):
         return False, f"替换过程中出错: {e}"
 
 def verify_replacement(file_path):
-    """验证文件中是否已无edition = "2018"，且包含edition = "2021" """
+    """验证文件中是否已无edition = "2021"，且包含edition = "2024" """
     try:
         with open(file_path, 'r', encoding='utf-8') as f:
             content = f.read()
         
-        # 检查是否还有edition = "2018"
-        if re.search(r'edition\s*=\s*"2018"', content):
-            return False, "仍包含 edition = \"2018\""
+        # 检查是否还有edition = "2021"
+        if re.search(r'edition\s*=\s*"2021"', content):
+            return False, "仍包含 edition = \"2021\""
         
-        # 检查是否包含edition = "2021"
-        if not re.search(r'edition\s*=\s*"2021"', content):
-            return False, "未找到 edition = \"2021\""
+        # 检查是否包含edition = "2024"
+        if not re.search(r'edition\s*=\s*"2024"', content):
+            return False, "未找到 edition = \"2024\""
         
         return True, "验证通过"
     except Exception as e:
